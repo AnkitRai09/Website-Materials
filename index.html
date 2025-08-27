@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Register</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #74ebd5, #9face6);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+      width: 350px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 12px 0;
+      border: none;
+      border-radius: 8px;
+      background: #4a90e2;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #357abd;
+    }
+
+    .toggle-link {
+      margin-top: 10px;
+      display: block;
+      color: #4a90e2;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Login Form -->
+    <div id="login-form">
+      <h2>Login</h2>
+      <input type="text" placeholder="Username" id="login-username" required>
+      <input type="password" placeholder="Password" id="login-password" required>
+      <button onclick="login()">Login</button>
+      <span class="toggle-link" onclick="showRegister()">Don't have an account? Register</span>
+    </div>
+
+    <!-- Register Form -->
+    <div id="register-form" class="hidden">
+      <h2>Register</h2>
+      <input type="text" placeholder="Username" id="register-username" required>
+      <input type="password" placeholder="Password" id="register-password" required>
+      <button onclick="register()">Register</button>
+      <span class="toggle-link" onclick="showLogin()">Already have an account? Login</span>
+    </div>
+  </div>
+
+  <script>
+    // Switch between forms
+    function showRegister() {
+      document.getElementById('login-form').classList.add('hidden');
+      document.getElementById('register-form').classList.remove('hidden');
+    }
+
+    function showLogin() {
+      document.getElementById('register-form').classList.add('hidden');
+      document.getElementById('login-form').classList.remove('hidden');
+    }
+
+    // Dummy register function
+    function register() {
+      const username = document.getElementById("register-username").value;
+      const password = document.getElementById("register-password").value;
+      if (username && password) {
+        alert("Registered successfully! Now login.");
+        showLogin();
+      } else {
+        alert("Please fill in all fields!");
+      }
+    }
+
+    // Dummy login function
+    function login() {
+      const username = document.getElementById("login-username").value;
+      const password = document.getElementById("login-password").value;
+      if (username && password) {
+        alert("Welcome, " + username + "!");
+      } else {
+        alert("Please enter your credentials!");
+      }
+    }
+  </script>
+</body>
+</html>
